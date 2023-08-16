@@ -3,14 +3,20 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from "../ContactForm/ContactForm";
 import { Filter } from "components/Filter/Filter";
 import { ContactList } from "components/ContactList/ContactList";
-import  useLocaleStorage  from '../hooks/locale.storage';
+import useLocaleStorage from '../hooks/locale.storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from "redux/contactsSlice";
+
 
 
 
 const PhoneBook = () => {
     const [contacts, setContacts] = useLocaleStorage('contacts',[]);
     const [filter, setFilter] = useState('');
- 
+    const dispatch = useDispatch();
+    
+
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -23,13 +29,14 @@ const PhoneBook = () => {
             evt.target.number.value = '';
             return
         }
-         let contact = {
+         const contact = {
       id: nanoid(),
       name:nameContact,
       number:numberTel,
     }
-
-    setContacts(contacts => ([...contacts, contact]))
+     
+        dispatch(addContact(contact))
+    // setContacts(contacts => ([...contacts, contact]))
        
         evt.target.name.value = '';
         evt.target.number.value = '';
