@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 
 export const ContactForm = ({ Submit }) => {
+    
 
     return (
         <>
-            <h2 className={css.title} >  PhoneBook</h2>
+            <h2 className={css.title} >PhoneBook</h2>
         <form className={css.form} onSubmit={Submit}>
             <label ><span className={css.nameForm}>Name</span>
                 <input
