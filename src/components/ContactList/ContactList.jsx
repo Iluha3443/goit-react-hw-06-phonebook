@@ -9,7 +9,7 @@ export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.contacts);
   const filterContact = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
-  console.log(filterContact)
+
   
    return (
     <ul className={css.list}>

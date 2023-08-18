@@ -1,17 +1,16 @@
-import React, {useState} from "react";
+
 import { nanoid } from 'nanoid';
 import { ContactForm } from "../ContactForm/ContactForm";
 import { Filter } from "components/Filter/Filter";
 import { ContactList } from "components/ContactList/ContactList";
 import useLocaleStorage from '../hooks/locale.storage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { handleSubmit } from "redux/contactsSlice";
 
 
 
-
 const PhoneBook = () => {
-    const [contacts, setContacts] = useLocaleStorage('contacts',[]);
+    // const [contacts, setContacts] = useLocaleStorage('contacts',[]);
     const dispatch = useDispatch();
     
     const addContact = (evt) => {
