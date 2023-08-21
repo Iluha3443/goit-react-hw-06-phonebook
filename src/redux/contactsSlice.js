@@ -18,7 +18,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
             state.contacts = state.contacts.filter(contact => contact.id !== actions.payload)
         },
         filteredContacts(state, actions) {
-            state.filter = state.contacts.filter(contact => contact.name.toLowerCase().includes(actions.payload))
+            state.filter = actions.payload
         },
     }
 });

@@ -7,27 +7,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.contacts);
-  const filterContact = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
-
+  
+    const filteredContacts = () => contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   
    return (
     <ul className={css.list}>
-      {filterContact !== '' ? (
-        [...filterContact].map((contact) => (
+      {filteredContacts().map((contact) => (
           <li className={css.contact} key={contact.id}>
             {contact.name}: {contact.number}
-             <button className={css.btn} type='button' onClick={() => dispatch(deleteNumber(contact.id))} >DELETE</button>
+             <button className={css.btn} type='button' onClick={() => dispatch(deleteNumber(contact.id))}>DELETE</button>
           </li>
         ))
-      ) : (
-        contacts.map(contact => (
-          <li className={css.contact} key={contact.id}>
-            {contact.name}: {contact.number}
-            <button className={css.btn} type='button' onClick={() => dispatch(deleteNumber(contact.id))} >DELETE</button>
-          </li>
-        ))
-      )}
+      }
     </ul>
   );
 }
